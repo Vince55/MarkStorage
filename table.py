@@ -2,7 +2,7 @@ class Table():
     ''' '''
 
     def __init__(self):
-        '''
+        '''(Table) -> Nonetype
         '''
         self._data = {}
 
