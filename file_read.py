@@ -76,7 +76,8 @@ def read_database():
     return database
 
 if (__name__ == "__main__"):
-    my_table = read_file_into_table("test_file.csv")
+    # Testing this code, reading in csv. files into tables
+    my_table = read_file_into_table("__test_file.csv")
 
     dict_rep = my_table._data
     column_list = list(dict_rep.keys())

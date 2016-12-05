@@ -35,6 +35,7 @@ def append_existing_file(file_name, line):
     file_handle_append.close()
 
 if (__name__ == "__main__"):
+    # Making a table and writing it to a file
     table1 = Table()
     table1._data = {'Weight': ['Par.', 'NL', 'BV'],
                     'Mark': [
