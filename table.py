@@ -1,3 +1,7 @@
+class RowsUnevenError(Exception):
+    '''An error to be raised when the rows are uneven upon adding a dictionary
+    '''
+
 class Table():
     '''A class to represent a table'''
 
@@ -46,6 +50,13 @@ class Table():
         # what if an item is already/not there?
         pass
 
+    def set_item(self, column_name, item):
+        '''
+        '''
+        # what if the row doesn't exist
+        # what if an item is already/not there?
+        self._data[column_name].append(item)
+
     def get_item(self, column_name, row_index):
         '''
         '''
@@ -55,6 +66,21 @@ class Table():
         '''
         '''
         del self._data[column_name][row_index]
+
+    def num_rows(self):
+        '''(Table) -> int
+        Returns the number of rows in the table
+        '''
+        # Start at 0
+        row_number = 0
+        # Need to get keys so a column can be accessed, can't arbitrarly pick
+        # a random column
+        keys = self.get_headers()
+        # If columns exist
+        if (len(keys) != 0):
+            # Get the first one
+            row_number = len(self._data[keys[0]]) + 1
+        return row_number
 
 
 class Database():

@@ -1,5 +1,7 @@
 # Functions that can read files into tables and databases
 
+from table import *
+
 def read_file_into_table(file_name):
     '''(str) -> Table
     Return a table object with header-list pairs as key-value pairs from
@@ -26,7 +28,7 @@ def read_file_into_table(file_name):
         table.set_column(table_headers_list[header_pos], [])
 
     # Preparing to read in rest of data
-    next_row = my_file.readline().rstrip()
+    next_row = file_handle_read.readline().rstrip()
 
     # As long as there are more lines to read, read another
     while(next_row != ''):
@@ -34,16 +36,17 @@ def read_file_into_table(file_name):
         line_data = next_row.split(",")
 
         # Iterates through data in row
-        for column in range(len(table_headers)):
+        for column in range(len(table_headers_list)):
             # Adds it to its respective list(header identified by position in
-            # the header list, also known as table_headers
-            table.set_item(table_headers[column], line_data[column].strip())
+            # the header list, also known as table_headers_list
+            table.set_item(
+                table_headers_list[column], line_data[column].strip())
 
         # Repeat reading lines, getting rid off all blank lines from the end
-        next_row = my_file.readline().rstrip()
+        next_row = file_handle_read.readline().rstrip()
 
     # Close the file once done with the file
-    my_file.close()
+    file_handle_read.close()
 
     # Return the table object
     return table
@@ -71,3 +74,18 @@ def read_database():
 
     # Return the database object
     return database
+
+if (__name__ == "__main__"):
+    my_table = read_file_into_table("test_file.csv")
+
+    dict_rep = my_table._data
+    column_list = list(dict_rep.keys())
+    print(','.join(column_list))
+    num_rows = my_table.num_rows()
+    for i in range(num_rows-1):
+        cur_column = []
+        for column in column_list:
+            cur_column.append(dict_rep[column][i])
+        print(','.join(cur_column))
+
+    print(dict_rep)
