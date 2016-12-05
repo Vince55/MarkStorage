@@ -3,7 +3,7 @@ from table import *
 def write_to_file(course_name, table):
     '''
     '''
-    file_handle_write = open(course_name + " marks.csv", "w")
+    file_handle_write = open("_" + course_name + " marks.csv", "w")
 
     file_handle_write.write("Can\nseparate\nlines\nlike\nthis\n")
     file_handle_write.write("Testing writing function\n")
