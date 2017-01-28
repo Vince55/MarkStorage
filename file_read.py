@@ -1,5 +1,6 @@
 # Functions that can read files into tables and databases
 
+import glob
 from table import *
 
 def read_file_into_table(file_name):
@@ -68,7 +69,7 @@ def read_database():
     # Go through every file in the list
     for file_name in file_list:
         # Create a table, then add it
-        table_to_add = read_table(file_name)
+        table_to_add = read_file_into_table(file_name)
         # Create a table name, then add the table and table name to database
         database.add_table(file_name[:-4], table_to_add)
 

@@ -86,7 +86,7 @@ class Table():
 class Database():
     ''' A class to represent a database'''
 
-    def __init__():
+    def __init__(self):
         '''
         '''
         self._data = {}

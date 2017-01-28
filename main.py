@@ -1,3 +1,6 @@
+from file_read import *
+from file_write_append import *
+
 def main():
     '''
     '''
@@ -19,6 +22,12 @@ def main():
 
 def introductions():
     print("Welcome to Grade-a-base (still working on the name)")
+
+    print("Loading previous courses...")
+    # Make the database
+    database = read_database()
+    print("Done!")
+
     print("Would you like open previous courses or add a new one?")
     open_make_choice = input("Enter either open or make(open/make): ")
     while (open_make_choice != "open" and open_make_choice != "make"):
