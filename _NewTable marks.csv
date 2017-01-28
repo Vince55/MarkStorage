@@ -6,7 +6,7 @@ this
 Testing writing function
 Hello friends
 Harambe
-PercentageOfTotal,Weight,Name,Mark
-2186.8,Par.,1997,Titanic
-1119.9,NL,2003,The Lord of the Rings: The Return of the King
-1063.2,BV,2010,Toy Story 3
+PercentageOfTotal,Name,Weight,Mark
+2186.8,1997,Par.,Titanic
+1119.9,2003,NL,The Lord of the Rings: The Return of the King
+1063.2,2010,BV,Toy Story 3
