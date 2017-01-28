@@ -82,6 +82,21 @@ class Table():
             row_number = len(self._data[keys[0]]) + 1
         return row_number
 
+    def print_csv(self):
+        '''(Table) -> NoneType
+        Print a representation of table in csv format.
+        '''
+        # no need to edit this one, but you may find it useful (you're welcome)
+        dict_rep = self._data
+        columns = list(dict_rep.keys())
+        print(','.join(columns))
+        rows = self.num_rows() - 1
+        for i in range(rows):
+            cur_column = []
+            for column in columns:
+                cur_column.append(dict_rep[column][i])
+            print(','.join(cur_column))
+
 
 class Database():
     ''' A class to represent a database'''
@@ -97,5 +112,14 @@ class Database():
         self._data[table_name] = table
 
     def get_table(self, table_name):
+        '''(Database) -> Table
+        Returns the table mapped to the given table_name
+        REQ: table_name must exist in the database
+        '''
+        # Get the value mapped to the table_name
+        return self._data[table_name]
+
+    def get_all_table_names(self):
         '''
         '''
+        return self._data.keys()

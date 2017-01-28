@@ -5,10 +5,10 @@ def write_to_file(course_name, table):
     '''
     file_handle_write = open("_" + course_name + " marks.csv", "w")
 
-    file_handle_write.write("Can\nseparate\nlines\nlike\nthis\n")
-    file_handle_write.write("Testing writing function\n")
-    file_handle_write.write("Hello friends\n")
-    file_handle_write.write("Harambe\n")
+    #file_handle_write.write("Can\nseparate\nlines\nlike\nthis\n")
+    #file_handle_write.write("Testing writing function\n")
+    #file_handle_write.write("Hello friends\n")
+    #file_handle_write.write("Harambe\n")
 
     the_dict = table._data
     header_list = list(the_dict.keys())
@@ -37,7 +37,7 @@ def append_existing_file(file_name, line):
 if (__name__ == "__main__"):
     # Making a table and writing it to a file
     table1 = Table()
-    table1._data = {'Weight': ['Par.', 'NL', 'BV'],
+    table1._data = {'Weight': ['4', '6', '10'],
                     'Mark': [
                         'Titanic',
                         'The Lord of the Rings: The Return of the King',

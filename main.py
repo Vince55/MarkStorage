@@ -27,7 +27,12 @@ def introductions():
     # Make the database
     database = read_database()
     print("Done!")
-
+    print()
+    for table in database.get_all_table_names():
+        print ("Name: " + table)
+        database.get_table(table).print_csv()
+        print()
+    print()
     print("Would you like open previous courses or add a new one?")
     open_make_choice = input("Enter either open or make(open/make): ")
     while (open_make_choice != "open" and open_make_choice != "make"):
