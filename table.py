@@ -79,7 +79,7 @@ class Table():
         # If columns exist
         if (len(keys) != 0):
             # Get the first one
-            row_number = len(self._data[keys[0]]) + 1
+            row_number = len(self._data[keys[0]])
         return row_number
 
     def print_csv(self):
@@ -90,7 +90,7 @@ class Table():
         dict_rep = self._data
         columns = list(dict_rep.keys())
         print(','.join(columns))
-        rows = self.num_rows() - 1
+        rows = self.num_rows()
         for i in range(rows):
             cur_column = []
             for column in columns:

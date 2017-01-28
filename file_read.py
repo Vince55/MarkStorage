@@ -84,7 +84,7 @@ if (__name__ == "__main__"):
     column_list = list(dict_rep.keys())
     print(','.join(column_list))
     num_rows = my_table.num_rows()
-    for i in range(num_rows-1):
+    for i in range(num_rows):
         cur_column = []
         for column in column_list:
             cur_column.append(dict_rep[column][i])

@@ -15,7 +15,7 @@ def write_to_file(course_name, table):
     # Write headers
     file_handle_write.write(','.join(header_list) + "\n")
     # Subtract reader row
-    num_rows = table.num_rows() - 1
+    num_rows = table.num_rows()
     for row in range(num_rows):
         cur_column = []
         # Add every piece in the row
