@@ -138,7 +138,8 @@ class Table():
             str_lines[0] += (largest_str - len(column) + 1) * " "
             for row in range(0, self.num_rows()):
                 # add the column to the string representation so far
-                str_lines[row + 1] += dict_rep[column][row]
+                word = dict_rep[column][row]
+                str_lines[row + 1] += word
                 str_lines[row + 1] += (largest_str - len(word) + 1) * " "
             largest_str = 0
         # when done, print every line
