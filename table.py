@@ -101,18 +101,49 @@ class Table():
         '''
         '''
         dict_rep = self._data
+        # all the representations
+        str_lines = []
+
+        # largest str
+        largest_str = 0
         columns = list(dict_rep.keys())
+        if columns:
+            # Find length of first column
+            length = len(dict_rep[columns[0]])
+            # Add the row, remember to add one for the column too
+            for row in range(length + 1):
+                str_lines.append("")
+
         # for every column
-        # for column in range(1, len(columns)):
-        # go through every row in column
+        for column in columns:
+            # read the column first
+            word = column
+            if len(word) > largest_str:
+                # record number
+                largest_str = len(word)
 
-        # find the largest one
+            # go through every row in column
+            for row in range(self.num_rows()):
+                # if larger
+                word = dict_rep[column][row]
+                if len(word) > largest_str:
+                    # record number
+                    largest_str = len(word)
+            # the length of the largest one + 1 is where the next column starts
+            # add the item, then add the max length - what was already taken up
+            # in spaces to the end of the string
 
-        # the length of the largest one + 1 is where the next column starts
-
-        # add the column to the string representation so far
-
+            # also to represent the column to also be added
+            str_lines[0] += column
+            str_lines[0] += (largest_str - len(column) + 1) * " "
+            for row in range(0, self.num_rows()):
+                # add the column to the string representation so far
+                str_lines[row + 1] += dict_rep[column][row]
+                str_lines[row + 1] += (largest_str - len(word) + 1) * " "
+            largest_str = 0
         # when done, print every line
+        for row in str_lines:
+            print(row)
 
 
 class Database():
