@@ -1,4 +1,4 @@
-Weight,PercentageOfTotal,Mark,Name
-4,2186.8,Titanic,1997
-6,1119.9,The Lord of the Rings: The Return of the King,2003
-10,1063.2,Toy Story 3,2010
+Weight,Name,PercentageOfTotal,Mark
+4,1997,2186.8,Titanic
+6,2003,1119.9,The Lord of the Rings: The Return of the King
+10,2010,1063.2,Toy Story 3

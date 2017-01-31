@@ -10,6 +10,9 @@ class Table():
         Initializing a table (data) with a dictionary.
         '''
         self._data = {}
+        # Default preferences
+        self._header_preferences = [
+            "Name", "Mark", "Weight", "Percentage Of Total"]
 
     def set_column(self, column_name, data):
         '''(Table, str, str) -> Nonetype
@@ -108,6 +111,7 @@ class Table():
         # largest str
         largest_str = 0
         columns = list(dict_rep.keys())
+        columns = self.header_preference_sorter(columns)
         if columns:
             # Find length of first column
             length = len(dict_rep[columns[0]])
@@ -130,6 +134,7 @@ class Table():
                 if len(word) > largest_str:
                     # record number
                     largest_str = len(word)
+
             # the length of the largest one + 1 is where the next column starts
             # add the item, then add the max length - what was already taken up
             # in spaces to the end of the string
@@ -146,6 +151,22 @@ class Table():
         # when done, print every line
         for row in str_lines:
             print(row)
+
+    def header_preference_sorter(self, input_headers):
+        '''
+        '''
+        sorted_list = []
+        # Go through every header in order
+        for header in self._header_preferences:
+            # If it is in the database
+            if header in input_headers:
+                # Add it next in priority and remove from original list
+                sorted_list.append(header)
+                input_headers.remove(header)
+        # Add the rest back
+        for header in input_headers:
+            sorted_list.append(header)
+        return sorted_list
 
 
 class Database():
