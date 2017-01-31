@@ -97,6 +97,23 @@ class Table():
                 cur_column.append(dict_rep[column][i])
             print(','.join(cur_column))
 
+    def print_table(self):
+        '''
+        '''
+        dict_rep = self._data
+        columns = list(dict_rep.keys())
+        # for every column
+        # for column in range(1, len(columns)):
+        # go through every row in column
+
+        # find the largest one
+
+        # the length of the largest one + 1 is where the next column starts
+
+        # add the column to the string representation so far
+
+        # when done, print every line
+
 
 class Database():
     ''' A class to represent a database'''
