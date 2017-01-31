@@ -49,9 +49,9 @@ if (__name__ == "__main__"):
     # A more legitamate test table
     table2 = Table()
     table2._data = {'Weight': ['1.0', '8.0', '12.5'],
-                    'Mark': ['1/1', '290/300', '36.5/50'],
+                    'Mark': ['100.00', '96.67', '72.5'],
                     'Name': ['q1', 'a1', 'tt1'],
-                    'Percentage Of Total': ['100.0', '96.7', '72.5']}
+                    'Percentage Of Total': ['1.00', '7.73', '9.0625']}
     write_to_file("Computer Science", table2)
     #write_to_file("Computer Science")
     #append_existing_file("Computer Science marks.csv", "#Leafs3016")

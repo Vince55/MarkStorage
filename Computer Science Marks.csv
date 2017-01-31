@@ -1,4 +1,4 @@
-Weight,Percentage Of Total,Name,Mark
-1.0,100.0,q1,1/1
-8.0,96.7,a1,290/300
-12.5,72.5,tt1,36.5/50
+Mark,Name,Weight,Percentage Of Total
+100.00,q1,1.0,1.00
+96.67,a1,8.0,7.73
+72.5,tt1,12.5,9.0625
