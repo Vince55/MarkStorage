@@ -56,7 +56,8 @@ def preview_all_tables(database):
     print()
     print("----------")
     for table in database.get_all_table_names():
-        print ("Name: " + table)
+        print ("Table Name: " + table)
+        print()
         database.get_table(table).print_table()
         # database.get_table(table).print_csv()
         print()

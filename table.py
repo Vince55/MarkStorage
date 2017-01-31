@@ -98,7 +98,8 @@ class Table():
             print(','.join(cur_column))
 
     def print_table(self):
-        '''
+        '''(Table) -> NoneType
+        Print a representation of table in a clean table format.
         '''
         dict_rep = self._data
         # all the representations

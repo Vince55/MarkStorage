@@ -3,7 +3,7 @@ from table import *
 def write_to_file(course_name, table):
     '''
     '''
-    file_handle_write = open("_" + course_name + " marks.csv", "w")
+    file_handle_write = open(course_name + " Marks.csv", "w")
 
     #file_handle_write.write("Can\nseparate\nlines\nlike\nthis\n")
     #file_handle_write.write("Testing writing function\n")
@@ -44,6 +44,14 @@ if (__name__ == "__main__"):
                         'Toy Story 3'],
                     'Name': ['1997', '2003', '2010'],
                     'PercentageOfTotal': ['2186.8', '1119.9', '1063.2']}
-    write_to_file("NewTable", table1)
+    write_to_file("Course Name", table1)
+
+    # A more legitamate test table
+    table2 = Table()
+    table2._data = {'Weight': ['1.0', '8.0', '12.5'],
+                    'Mark': ['1/1', '290/300', '36.5/50'],
+                    'Name': ['q1', 'a1', 'tt1'],
+                    'Percentage Of Total': ['100.0', '96.7', '72.5']}
+    write_to_file("Computer Science", table2)
     #write_to_file("Computer Science")
     #append_existing_file("Computer Science marks.csv", "#Leafs3016")
