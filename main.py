@@ -83,7 +83,7 @@ def open_existing_table(database):
     while (table_choice not in list_of_tables):
         print("This course was not found in the database")
         table_choice = input("Please try again: ")
-    print("ASDASDASD")
+    database.get_table(table_choice).print_table()
 
 
 if (__name__ == "__main__"):
