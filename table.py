@@ -194,3 +194,8 @@ class Database():
         '''
         '''
         return self._data.keys()
+
+    def delete_table(table):
+        '''
+        '''
+        del self._data[table]

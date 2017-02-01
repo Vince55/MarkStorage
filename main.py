@@ -7,11 +7,11 @@ def main():
     introductions()
     # What I should do for now is put all the source code into one folder and
     # put main into another
-
+    # done
     # Reads in all existing table files into table
-
+    # done
     # Tells the user the files it found
-
+    # done
     # Asks user if they want to print everything or open one at a time
     # Add ability to do more than one at a time
 
@@ -48,6 +48,33 @@ def introductions():
     else:
         open_existing_table(database)
 
+        editing_choices = ["add", "modify", "delete"]
+        print()
+        print("Would you like to add, modify or delete this table? (add/modify/delete)")
+        add_modify_delete_choice = input()
+        while (add_modify_delete_choice not in editing_choices):
+            add_modify_delete_choice = input("Please enter an option: ")
+        if (add_modify_delete_choice == "add"):
+            add_to_table()
+        elif (add_modify_delete_choice == "modify"):
+            modify_table()
+        else:
+            delete_table()
+
+def add_to_table():
+    '''
+    '''
+
+def modify_table():
+    '''
+    '''
+
+def delete_table():
+    '''
+    '''
+
+    # Need to remove table and re-write file
+
 
 def preview_all_tables(database):
     '''
@@ -77,6 +104,7 @@ def open_existing_table(database):
     print("These are the courses you currently have: ")
     for table in list_of_tables:
         print(table)
+
     print()
     print("Which course do you want to open?")
     table_choice = input("Please enter the exact name as it is displayed above: ")
