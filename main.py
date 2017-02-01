@@ -46,7 +46,7 @@ def introductions():
     if (open_make_choice == "make"):
         make_new_table()
     else:
-        open_existing_table()
+        open_existing_table(database)
 
 
 def preview_all_tables(database):
@@ -69,9 +69,21 @@ def make_new_table():
     '''
     '''
 
-def open_existing_table():
+def open_existing_table(database):
     '''
     '''
+    print()
+    list_of_tables = list(database.get_all_table_names())
+    print("These are the courses you currently have: ")
+    for table in list_of_tables:
+        print(table)
+    print()
+    print("Which course do you want to open?")
+    table_choice = input("Please enter the exact name as it is displayed above: ")
+    while (table_choice not in list_of_tables):
+        print("This course was not found in the database")
+        table_choice = input("Please try again: ")
+    print("ASDASDASD")
 
 
 if (__name__ == "__main__"):

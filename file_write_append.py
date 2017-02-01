@@ -30,7 +30,7 @@ def append_existing_file(file_name, line):
     '''
     '''
     file_handle_append = open(file_name, "a")
-    file_handle_append.write("Adding information to existing file\n")
+    # file_handle_append.write("Adding information to existing file\n")
     file_handle_append.write(line)
     file_handle_append.close()
 
