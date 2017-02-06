@@ -60,19 +60,23 @@ class Table():
         pass
 
     def set_item(self, column_name, item):
-        '''
+        '''(Table, str, str) -> NoneType
+        Adds a value to the end of a given column of a table.
         '''
         # what if the row doesn't exist
         # what if an item is already/not there?
         self._data[column_name].append(item)
 
     def get_item(self, column_name, row_index):
-        '''
+        '''(Table, str, int) -> str
+        Returns the string at a given column and row of a table.
         '''
         return self._data[column_name][row_index]
 
     def delete_item(self, column_name, row_index):
-        '''
+        '''(Table, str, int) -> NoneType
+        Deletes an itemn from the table, given the row number and column of the
+        table.
         '''
         del self._data[column_name][row_index]
 
@@ -108,7 +112,7 @@ class Table():
 
     def print_table(self):
         '''(Table) -> NoneType
-        Print a representation of table in a clean table format.
+        Print a representation of table in a more visually clean table format.
         '''
         dict_rep = self._data
         # all the representations
@@ -159,7 +163,11 @@ class Table():
             print(row)
 
     def header_preference_sorter(self, input_headers):
-        '''
+        '''(Table, list of str) -> list of str
+        Given a list of headers, with each header indexed by its preference,
+        sorts the current table's headers such that it aligns with that of the
+        given list. The purpose of returning an ordered list is to display the
+        headers later in an ordered manner.
         '''
         sorted_list = []
         # Go through every header in order
@@ -179,12 +187,15 @@ class Database():
     ''' A class to represent a database'''
 
     def __init__(self):
-        '''
+        '''(Database) -> NoneType
+        Initialize database with a dictionary.
         '''
         self._data = {}
 
     def add_table(self, table_name, table):
-        '''
+        '''(Database, str, Table) -> NoneType
+        Add a table name-Table pair as a key-value pair into the database
+        REQ: table_name must not already exist in the database
         '''
         self._data[table_name] = table
 
@@ -197,11 +208,13 @@ class Database():
         return self._data[table_name]
 
     def get_all_table_names(self):
-        '''
+        '''(Database) -> list of str
+        Returns a list of the names of tables in the database.
         '''
         return self._data.keys()
 
-    def delete_table(table):
-        '''
+    def delete_table(self, table_name):
+        '''(Database, str) -> NoneType
+        Removes a table from the database given its name, or key value.
         '''
         del self._data[table]
