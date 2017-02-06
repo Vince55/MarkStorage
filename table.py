@@ -15,19 +15,21 @@ class Table():
             "Name", "Mark", "Weight", "Percentage Of Total"]
 
     def set_column(self, column_name, data):
-        '''(Table, str, str) -> Nonetype
+        '''(Table, str, str) -> NoneType
         Adds a column to the table. Done by adding a header-key pair to the
         table.
         '''
         self._data[column_name] = data
 
     def delete_column(self, column_name):
-        '''
+        '''(Table, str) -> NoneType
+        Deletes a column from the table, given the column's name.
         '''
         del self._data[column_name]
 
     def get_headers(self):
-        '''
+        '''(Table) -> list of str
+        Returns a list of the names of columns.
         '''
         header_list = list(self._data.keys())
         return header_list
@@ -40,14 +42,18 @@ class Table():
         pass
 
     def delete_row(self, row_index):
-        '''
+        '''(Table, int) -> NoneType
+        Deletes a column from the table, given the row number (header doesn't
+        count).
         '''
         header_list = self.get_headers
         for header in header_list:
             self.delete_item(header, row_num)
 
     def set_item(self, column_name, row_index, item):
-        '''
+        '''(Table, str, int, str) -> NoneType
+        Sets a value (overwriting if a value is already set in that location)
+        given the column and row for the respective table.
         '''
         # what if the row doesn't exist
         # what if an item is already/not there?
