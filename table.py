@@ -115,50 +115,62 @@ class Table():
         Print a representation of table in a more visually clean table format.
         '''
         dict_rep = self._data
-        # all the representations
+        # This is where all the newly formatted lines of the table are going to
+        # be stored, later every string in this list will be printed
         str_lines = []
 
-        # largest str
+        # Largest str length in a column
         largest_str = 0
-        columns = list(dict_rep.keys())
-        columns = self.header_preference_sorter(columns)
+        # Get columns and sort them so they can be printed in order
+        non_sorted_columns = list(dict_rep.keys())
+        columns = self.header_preference_sorter(non_sorted_columns)
+
+        # If it isn't empty, find the length of a column
+        # This is so the list can be popluated with an equal amount of strings
+        # to match the amount of rows to be concatenated into those strings
         if columns:
-            # Find length of first column
             length = len(dict_rep[columns[0]])
-            # Add the row, remember to add one for the column too
+            # Add an empty string for each row + a row for column headers
             for row in range(length + 1):
                 str_lines.append("")
 
-        # for every column
+        # For every column
         for column in columns:
-            # read the column first
+            # Looking for largest string to column, so that an appropriate
+            # amount of spaces can be added to the rest of the strings such
+            # that all the strings are the same length and the next column can
+            # be aligned
+            # Read the column first
             word = column
-            if len(word) > largest_str:
-                # record number
-                largest_str = len(word)
-
-            # go through every row in column
+            # The largest string will automatically be the length of the
+            # column name, as the length of the string will be zero or larger
+            largest_str = len(word)
+            # Then go through every row in column
             for row in range(self.num_rows()):
-                # if larger
+                # If larger
                 word = dict_rep[column][row]
                 if len(word) > largest_str:
-                    # record number
+                    # Record length
                     largest_str = len(word)
 
-            # the length of the largest one + 1 is where the next column starts
-            # add the item, then add the max length - what was already taken up
-            # in spaces to the end of the string
+            # The length of the largest one + 1 is where the next column starts
+            # This is to add a buffer space for clarity
+            # Add the item, then add the difference between the largest length
+            # and the length of the added item
+            # This is done in spaces to the end of the string
 
-            # also to represent the column to also be added
+            # Add the word to the string representation in that row
+            # Find the word, then add the word, then add the spaces
+            # First done with columns and then every word in the row
             str_lines[0] += column
             str_lines[0] += (largest_str - len(column) + 1) * " "
             for row in range(0, self.num_rows()):
-                # add the column to the string representation so far
                 word = dict_rep[column][row]
                 str_lines[row + 1] += word
                 str_lines[row + 1] += (largest_str - len(word) + 1) * " "
+            # Reset the largest string length for the next column
             largest_str = 0
-        # when done, print every line
+        # When done, print every line in the newly formatted table
         for row in str_lines:
             print(row)
 
@@ -171,14 +183,15 @@ class Table():
         preferences are automaticaly for each table upon set-up.
         '''
         sorted_list = []
-        # Go through every header in order
+        # Go through every header in preference list in order
         for header in self._header_preferences:
-            # If it is in the database
+            # If the given list contains the header in preference list
             if header in input_headers:
                 # Add it next in priority and remove from original list
                 sorted_list.append(header)
                 input_headers.remove(header)
-        # Add the rest back
+        # Add the rest of the unadded headers back, order doesn't matter
+        # because they weren't given a preference
         for header in input_headers:
             sorted_list.append(header)
         return sorted_list
