@@ -86,7 +86,6 @@ def preview_all_tables(database):
         print ("Table Name: " + table)
         print()
         database.get_table(table).print_table()
-        # database.get_table(table).print_csv()
         print()
     print("Done!")
     print("----------")

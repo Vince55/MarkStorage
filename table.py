@@ -10,7 +10,7 @@ class Table():
         Initializing a table (data) with a dictionary.
         '''
         self._data = {}
-        # Default preferences
+        # Default preferences for header order
         self._header_preferences = [
             "Name", "Mark", "Weight", "Percentage Of Total"]
 
@@ -31,22 +31,24 @@ class Table():
         '''(Table) -> list of str
         Returns a list of the names of columns.
         '''
-        header_list = list(self._data.keys())
-        return header_list
+        # Table names are stored as keys in the database
+        return list(self._data.keys())
 
     def set_row(self, row_num, data):
         '''(Table, int, str) -> NoneType
         Adds a row to the table. Done by adding each element of the row into
         its respective columns.
+        TODO: Finish function
         '''
         pass
 
     def delete_row(self, row_index):
         '''(Table, int) -> NoneType
-        Deletes a column from the table, given the row number (header doesn't
-        count).
+        Deletes a row from the table, given the row number (header doesn't
+        count). Gets every header and the respective column, then deletes the
+        item at the index given from each and every column.
         '''
-        header_list = self.get_headers
+        header_list = self.get_headers()
         for header in header_list:
             self.delete_item(header, row_num)
 
@@ -54,6 +56,7 @@ class Table():
         '''(Table, str, int, str) -> NoneType
         Sets a value (overwriting if a value is already set in that location)
         given the column and row for the respective table.
+        TODO: Finish functions
         '''
         # what if the row doesn't exist
         # what if an item is already/not there?
@@ -63,8 +66,6 @@ class Table():
         '''(Table, str, str) -> NoneType
         Adds a value to the end of a given column of a table.
         '''
-        # what if the row doesn't exist
-        # what if an item is already/not there?
         self._data[column_name].append(item)
 
     def get_item(self, column_name, row_index):
@@ -75,7 +76,7 @@ class Table():
 
     def delete_item(self, column_name, row_index):
         '''(Table, str, int) -> NoneType
-        Deletes an itemn from the table, given the row number and column of the
+        Deletes an item from the table, given the row number and column of the
         table.
         '''
         del self._data[column_name][row_index]
@@ -83,6 +84,9 @@ class Table():
     def num_rows(self):
         '''(Table) -> int
         Returns the number of rows in the table
+        TODO: Add exceptions, comments
+        TODO: Need to deal with entire uneven rows issue that may be created by
+        set/delete item functions
         '''
         # Start at 0
         row_number = 0
@@ -95,26 +99,11 @@ class Table():
             row_number = len(self._data[keys[0]])
         return row_number
 
-    def print_csv(self):
-        '''(Table) -> NoneType
-        Print a representation of table in csv format.
-        '''
-        # no need to edit this one, but you may find it useful (you're welcome)
-        dict_rep = self._data
-        columns = list(dict_rep.keys())
-        print(','.join(columns))
-        rows = self.num_rows()
-        for i in range(rows):
-            cur_column = []
-            for column in columns:
-                cur_column.append(dict_rep[column][i])
-            print(','.join(cur_column))
-
     def print_table(self):
         '''(Table) -> NoneType
         Print a representation of table in a more visually clean table format.
         '''
-        dict_rep = self._data
+        table_data_dictionary = self._data
         # This is where all the newly formatted lines of the table are going to
         # be stored, later every string in this list will be printed
         str_lines = []
@@ -122,14 +111,14 @@ class Table():
         # Largest str length in a column
         largest_str = 0
         # Get columns and sort them so they can be printed in order
-        non_sorted_columns = list(dict_rep.keys())
+        non_sorted_columns = list(table_data_dictionary.keys())
         columns = self.header_preference_sorter(non_sorted_columns)
 
         # If it isn't empty, find the length of a column
         # This is so the list can be popluated with an equal amount of strings
         # to match the amount of rows to be concatenated into those strings
         if columns:
-            length = len(dict_rep[columns[0]])
+            length = len(table_data_dictionary[columns[0]])
             # Add an empty string for each row + a row for column headers
             for row in range(length + 1):
                 str_lines.append("")
@@ -148,7 +137,7 @@ class Table():
             # Then go through every row in column
             for row in range(self.num_rows()):
                 # If larger
-                word = dict_rep[column][row]
+                word = table_data_dictionary[column][row]
                 if len(word) > largest_str:
                     # Record length
                     largest_str = len(word)
@@ -165,7 +154,7 @@ class Table():
             str_lines[0] += column
             str_lines[0] += (largest_str - len(column) + 1) * " "
             for row in range(0, self.num_rows()):
-                word = dict_rep[column][row]
+                word = table_data_dictionary[column][row]
                 str_lines[row + 1] += word
                 str_lines[row + 1] += (largest_str - len(word) + 1) * " "
             # Reset the largest string length for the next column
