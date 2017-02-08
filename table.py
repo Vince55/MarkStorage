@@ -167,7 +167,8 @@ class Table():
         Given a list of headers, with each header indexed by its preference,
         sorts the current table's headers such that it aligns with that of the
         given list. The purpose of returning an ordered list is to display the
-        headers later in an ordered manner.
+        headers later in an ordered manner. Note that a list of default
+        preferences are automaticaly for each table upon set-up.
         '''
         sorted_list = []
         # Go through every header in order
@@ -190,6 +191,8 @@ class Database():
         '''(Database) -> NoneType
         Initialize database with a dictionary.
         '''
+        # Dictionaries enable fast lookup, deletion and insertion
+        # Similar to hashmap
         self._data = {}
 
     def add_table(self, table_name, table):
@@ -211,6 +214,7 @@ class Database():
         '''(Database) -> list of str
         Returns a list of the names of tables in the database.
         '''
+        # Table names are stored as keys in the database
         return self._data.keys()
 
     def delete_table(self, table_name):
