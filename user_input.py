@@ -6,10 +6,17 @@ def add_to_table():
 def modify_table():
     '''
     '''
+    pass
 
 def delete_table():
     '''
     '''
+    pass
+
+def make_new_table():
+    '''
+    '''
+    pass
 
 def preview_all_tables(database):
     '''
@@ -25,10 +32,6 @@ def preview_all_tables(database):
     print("Done!")
     print("----------")
     print()
-
-def make_new_table():
-    '''
-    '''
 
 def open_existing_table(database):
     '''

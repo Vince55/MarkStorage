@@ -61,6 +61,7 @@ def introductions():
             modify_table()
         else:
             delete_table()
+    print("Exited successfully")
 
 if (__name__ == "__main__"):
     main()
