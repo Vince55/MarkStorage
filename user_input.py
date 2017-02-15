@@ -1,14 +1,14 @@
-def add_to_table():
+def add_to_table(table):
     '''
     '''
     pass
 
-def modify_table():
+def modify_table(table):
     '''
     '''
     pass
 
-def delete_table():
+def delete_table(table):
     '''
     '''
     pass
