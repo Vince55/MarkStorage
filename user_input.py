@@ -8,10 +8,12 @@ def modify_table(table):
     '''
     pass
 
-def delete_table(table):
+def delete_table(database, table):
     '''
     '''
-    pass
+    database.delete_table(table)
+    print("Deleted!")
+    # Make it delete from file too
 
 def make_new_table():
     '''

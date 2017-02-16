@@ -60,7 +60,7 @@ def introductions():
         elif (add_modify_delete_choice == "modify"):
             modify_table()
         else:
-            delete_table()
+            delete_table(database, table)
     print("Exited successfully")
 
 if (__name__ == "__main__"):
